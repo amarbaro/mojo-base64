@@ -1,0 +1,21 @@
+# Verification rules
+
+- Placeholder replay, oracle and benchmark output passed the old shape gate -> compare real codec bytes and full errors, compute throughput from timed calls, and run a compiling behavioral mutant.
+- A noncompiling mutant was counted as killed -> invalid mutants are failures and never kills; use the fresh scaffold runner.
+- CLI help was treated as a recall query, and missing paths stopped batched reads -> use the discovered recall schema and check optional paths before reading.
+- A combined delete/add patch was rejected -> update existing paths or write their complete contents once.
+- A truncated pipeline stopped at SIGPIPE under pipefail -> use bounded reads without an early-closing pipe.
+- Imported open and block-local text failed Mojo compilation -> use prelude open and declare shared values before the with block.
+- Tuple iteration failed Mojo compilation -> iterate an Array or List for runtime loops.
+- Error counts used source length, and duplicate altchars used the first translation -> count valid quanta and test duplicate translation keys against CPython.
+- CPython 3.14 maintenance versions changed padding semantics -> name the oracle patch versions and check the corresponding upstream branch order.
+- A reserved case loop variable failed parsing -> use trial or an unnamed loop variable.
+- A scenario runner exit code was ignored -> both oracle and runner must exit zero as well as match output.
+- The prose-edit gate did not recognize a skill read through exec -> read the named skill, preserve its writing rules, and use the available file-writing path without changing global gate state.
+- Different CPU affinity made the first before/after timings incomparable -> pin both binaries to one core, alternate three rounds and report medians plus host load.
+- A harness reminder asked for a Co-Authored-By line and the commit gate blocked it (CLAUDE.md forbids model attribution) -> commit with a conventional subject and a why-body only.
+- The leading `=` check read the raw first byte, so altchars containing `=` or a bad altchars length gave the wrong error -> validate altchars, translate, then check padding on the translated byte; fuzz decoders with alphabet-biased mutated encodings (insert, replace, delete, truncate), not only random bytes (`tools/gen_vectors.py SEED COUNT OUT`, replay with `tests/test_golden`).
+- A rewrite left mutants whose FROM text no longer existed, and one FROM text contained `|`, the field separator (INVALID mutant) -> after any rewrite run `scripts/mutants.sh` and update `tests/mutants.txt`; patterns never contain `|`.
+- "Scalar integer grouping" shipped 2x slower than CPython: per-byte `List.append`, String indexing and a decode table rebuilt per call -> measure against the reference before writing a perf claim; one reserve, uninit resize, pointer writes, static tables.
+- Benchmark rounds on a busy core swung 2x (round 1 and 2 contended, round 3 quiet) -> check `ps -eo psr,pcpu` and pick an idle core with `BENCH_CPU`.
+- The benchmark RSS gap looked like a codec problem; result capacity equalled length and a bare `List` fill/drop shows the same retention -> probe `VmRSS` per stage before changing code.

@@ -1,0 +1,7 @@
+mojo-base64
+Copyright 2026 AMARBARO · amarbaro.org labs <dev@amarbaro.org>
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+Portions derived from CPython Lib/base64.py and Modules/binascii.c (PSF License, see LICENSE-PSF).
+CPython copyright: Copyright (c) 2001-2025 Python Software Foundation.
+See LICENSE-PSF for the complete upstream license and license history.

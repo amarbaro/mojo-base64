@@ -1,0 +1,2 @@
+# Golden TSV rows need the final empty field for an empty successful result.
+tests/golden/*.txt whitespace=-blank-at-eol

@@ -1,0 +1,22 @@
+src/base64/codec.mojo|if strict and n > 0 and t.unsafe_offset(Int(p.unsafe_offset(0)[]))[] == 254:|if False:
+src/base64/codec.mojo|if quad_pos >= 2 and quad_pos + pads <= 4:|if quad_pos >= 2 and quad_pos + pads < 4:
+src/base64/codec.mojo|if quad_pos == 1:|if False:
+src/base64/codec.mojo|if v < 0:|if v < -1:
+src/base64/codec.mojo|if strict and pads != 0:|if False:
+src/base64/codec.mojo|leftchar = v & 15|leftchar = v & 7
+src/base64/codec.mojo|if rem == 1:|if False:
+src/base64/codec.mojo|comptime _ENC_URL = _enc_table(45, 95)|comptime _ENC_URL = _enc_table(43, 47)
+src/base64/codec.mojo|if casefold and c >= 97 and c <= 122:|if False:
+src/base64/codec.mojo|c = map01[0]|c = UInt8(ord('A'))
+src/base64/codec.mojo|if leftover == 1:|if False:
+src/base64/codec.mojo|padchars not in (0, 1, 3, 4, 6)|padchars not in (0, 1, 2, 3, 4, 6)
+src/base64/codec.mojo|local[Int(altchars[0])] = 62|local[Int(altchars[0])] = 63
+src/base64/codec.mojo|elif c == 13: result += "\\r"|elif c == 13: result += "\\n"
+src/base64/codec.mojo|if tv == 254:|if tv == 253:
+src/base64/codec.mojo|if tv == 255:|if False:
+src/base64/codec.mojo|local[Int(altchars[1])] = 63|local[Int(altchars[1])] = 62
+src/base64/codec.mojo|elif rem == 2:|elif False:
+src/base64/codec.mojo|& 0xC0) != 0:|& 0xC0) > 200:
+src/base64/codec.mojo|if bad > 15:|if False:
+src/base64/codec.mojo|local[97 + i] = UInt8(10 + i)|local[97 + i] = UInt8(11 + i)
+src/base64/codec.mojo|t[10 + i] = UInt8(65 + i)|t[10 + i] = UInt8(66 + i)
