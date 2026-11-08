@@ -11,12 +11,12 @@ def reference(data: Span[UInt8, _], alphabet: String, width: Int, quantum: Int) 
             value = value * 2 + (Int(data[i]) // (1 << bit)) % 2
             bits += 1
             if bits == width:
-                result.append(UInt8(ord(alphabet[byte=value])))
+                result.append(UInt8(alphabet.as_bytes()[value]))
                 value = 0
                 bits = 0
     if bits:
         value *= 1 << (width - bits)
-        result.append(UInt8(ord(alphabet[byte=value])))
+        result.append(UInt8(alphabet.as_bytes()[value]))
     while len(result) % quantum:
         result.append(61)
     return result^
