@@ -3,8 +3,8 @@ from base64 import *
 def unhex(text: String) -> List[Byte]:
     var result = List[Byte]()
     for i in range(0, text.byte_length(), 2):
-        var a = Int(ord(text[byte=i]))
-        var b = Int(ord(text[byte=i+1]))
+        var a = Int(text.as_bytes()[i])
+        var b = Int(text.as_bytes()[i+1])
         result.append(UInt8((a - 48 if a <= 57 else a - 87) * 16 + (b - 48 if b <= 57 else b - 87)))
     return result^
 

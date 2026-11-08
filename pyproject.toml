@@ -1,6 +1,6 @@
 [project]
 name = "mojo-base64"
-version = "0.1.1"
+version = "0.1.2"
 description = "Base16/32/64 encode/decode matching CPython base64"
 license = "Apache-2.0"
 requires-python = ">=3.11,<3.15"

@@ -245,7 +245,7 @@ comptime _B32HEX = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
 def _make_b32_table(alphabet: String) -> Array[Int8, 256]:
     var t = Array[Int8, 256](fill=-1)
     for k in range(32):
-        t[Int(ord(alphabet[byte=k]))] = Int8(k)
+        t[Int(alphabet.as_bytes()[k])] = Int8(k)
     return t^
 
 def _b32encode_into_with(alphabet: String, s: Span[UInt8, _], mut out: List[Byte]):
@@ -254,28 +254,28 @@ def _b32encode_into_with(alphabet: String, s: Span[UInt8, _], mut out: List[Byte
     var i = 0
     while i + 5 <= n:
         var c = (Int(s[i]) << 32) | (Int(s[i+1]) << 24) | (Int(s[i+2]) << 16) | (Int(s[i+3]) << 8) | Int(s[i+4])
-        out.append(UInt8(ord(alphabet[byte=(c >> 35) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 30) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 25) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 20) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 15) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 10) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 5) & 31])))
-        out.append(UInt8(ord(alphabet[byte=c & 31])))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 35) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 30) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 25) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 20) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 15) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 10) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 5) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[c & 31]))
         i += 5
     if leftover != 0:
         var tail = Array[UInt8, 5](fill=0)
         for k in range(leftover):
             tail[k] = s[i + k]
         var c = (Int(tail[0]) << 32) | (Int(tail[1]) << 24) | (Int(tail[2]) << 16) | (Int(tail[3]) << 8) | Int(tail[4])
-        out.append(UInt8(ord(alphabet[byte=(c >> 35) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 30) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 25) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 20) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 15) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 10) & 31])))
-        out.append(UInt8(ord(alphabet[byte=(c >> 5) & 31])))
-        out.append(UInt8(ord(alphabet[byte=c & 31])))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 35) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 30) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 25) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 20) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 15) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 10) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[(c >> 5) & 31]))
+        out.append(UInt8(alphabet.as_bytes()[c & 31]))
         var L = len(out)
         if leftover == 1:
             for j in range(L-6, L):
