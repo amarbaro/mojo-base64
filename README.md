@@ -8,6 +8,9 @@ Base16, Base32, Base32hex and Base64 byte codecs for Mojo. Allocating calls
 return List[Byte]; `_into` calls append to caller-owned buffers. Oracle tests
 compare bytes and full error messages with CPython 3.14.8/3.14.9.
 
+Install: `pixi workspace channel add https://conda.modular.com/max https://prefix.dev/amarbaro/amarbaro`, then `pixi add mojo-base64` (import `base64`). From source: `git clone https://github.com/amarbaro/mojo-base64`, then `mojo run -I mojo-base64/src app.mojo`.
+Toolchains: Mojo 1.2 stable, and the nightly 1.3.0.dev2026110805 in the weekly [mojo-libs](https://github.com/amarbaro/mojo-libs) matrix (36 libraries on stable, 35 on nightly).
+
 Install with `uv sync`; from a clone compile with `-I src`.
 
 ```mojo
@@ -46,7 +49,6 @@ Empty altchars/map01 lists mean None; nonempty lists require lengths 2/1.
 Error uses Mojo Error, not Python exception classes.
 Strict padding follows the tested CPython maintenance versions.
 
-Tested toolchains: Mojo 1.2.0 and the nightly version recorded by scripts/nightly.sh.
 Run `MOJO=.venv/bin/mojo scripts/ci.sh` for oracle, golden, brute, mutants, API and
 example checks. Run `scripts/nightly.sh` for nightly. See [API](docs/api.md),
 [design and benchmark commands](docs/design.md), [skill](skills/mojo-base64/SKILL.md),
