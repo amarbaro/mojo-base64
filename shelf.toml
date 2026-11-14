@@ -1,0 +1,4 @@
+name = "mojo-base64"
+version = "0.1.2"
+description = "Base16/32/64 encode/decode matching CPython base64"
+tags = ["mojo", "base64", "encoding"]
